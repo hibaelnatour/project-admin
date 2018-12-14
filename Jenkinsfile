@@ -33,7 +33,7 @@ try {
 		//Get finalConfFilename in jenkins workspace after git checkout
 		stage(name: 'Get file'){
 			def files = findFiles(glob: 'final.json') 
-			echo "${files[0].name}"    	
+			//echo "${files[0].name}"    	
 			finalConfFilename = "${files[0].name}"
 		}
 
