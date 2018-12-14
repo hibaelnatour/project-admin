@@ -1,5 +1,11 @@
 {
-                "D": {
-            "text": "Hiba conf testing"
-        }
+  "A": {
+    "text": "fix conf"
+  },
+  "B": {
+    "text": "admin conf"
+  },
+  "C": {
+    "text": "user conf"
+  }
 }
