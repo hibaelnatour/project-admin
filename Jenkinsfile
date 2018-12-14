@@ -43,11 +43,7 @@ try {
 			
 			echo toJson(data)
 			
-			response = httpRequest consoleLogResponseBody: true, contentType: 'APPLICATION_JSON', httpMode: 'POST', requestBody: toJson(data), url: ${apiCoprSSOEndpoint}, validResponseCodes: '200'
-			
-
-			//echo "..................."
-			//sh "value=`cat test-conf.json`"
+			response = httpRequest consoleLogResponseBody: true, contentType: 'APPLICATION_JSON', httpMode: 'POST', requestBody: toJson(data), url: apiCoprSSOEndpoint, validResponseCodes: '200'		
 		}
 	}
 
