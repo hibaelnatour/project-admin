@@ -3,7 +3,7 @@
 String gitEmail = "hibaelnatour@gmail.com"
 String gitUser = "hibaelnatour"
 String gitRepoAdmin_URL = "https://github.com/hibaelnatour/project-admin.git" 
-String apiCoprSSOEndpoint = "http://api-transformation-myaccess-reg-jenk-poc.apps.na39.openshift.opentlc.com/api/v1/corpsso"
+String apiCoprSSOEndpoint = "http://api-transformation-jenkins-iam-poc.apps.na39.openshift.opentlc.com/api/v1/corpsso"
 String workspace
 String finalConfFilename
 
@@ -21,19 +21,22 @@ try {
 
 	node {
 
+		sh 'git config --global credential.helper cache'
+		sh 'git config --global push.default simple'
+		sh 'git config --global user.email hibaelnatour@gmail.com'
+		sh 'git config --global user.name hibaelnatour'
+		
 		workspace = pwd()
 
 		//Checkout Git repo project-admin 
 		stage(name: 'Checkout'){
-			sh 'git config user.email ${gitEmail}'
-			sh 'git config user.name ${gitUser}'
 			git url: gitRepoAdmin_URL, branch: 'master'
 		}
 
 		//Get finalConfFilename in jenkins workspace after git checkout
 		stage(name: 'Get file'){
 			def files = findFiles(glob: 'final.json') 
-			//echo "${files[0].name}"    	
+			echo "${files[0].name}"    	
 			finalConfFilename = "${files[0].name}"
 		}
 
